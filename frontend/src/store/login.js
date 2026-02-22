@@ -5,7 +5,7 @@ export const loginUser = createAsyncThunk(
   "register/login",
   async ({ email, password }, thunkAPI) => {
     try {
-      const response = await axios.post("http://localhost:911/upload/login", {
+      const response = await axios.post("https://raksha-kosh02.onrender.com/upload/login", {
         email,
         password,
       });
