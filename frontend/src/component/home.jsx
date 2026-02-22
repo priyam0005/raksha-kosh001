@@ -113,7 +113,7 @@ function readMagic(file) {
 
 function clientValidate(file, hex) {
   if (file.size > MAX_SIZE)
-    return `File too large — ${fmtSize(file.size)} exceeds 50 MB`;
+    return `File too large — ${fmtSize(file.size)} exceeds 10 MB`;
   const ext = "." + file.name.split(".").pop().toLowerCase();
   if (!ALLOWED_EXTENSIONS.includes(ext))
     return `Extension '${ext}' is not permitted`;
