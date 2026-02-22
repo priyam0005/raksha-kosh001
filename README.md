@@ -2,7 +2,7 @@
 
 <img src="https://img.shields.io/badge/MERN-Stack-blue?style=flat-square" />
 <img src="https://img.shields.io/badge/Security-4--Layer%20Defense-red?style=flat-square" />
-<img src="https://img.shields.io/badge/Detection%20Rate-99.7%25-green?style=flat-square" />
+
 
 
 # 🛡️ Raksha Kosh
