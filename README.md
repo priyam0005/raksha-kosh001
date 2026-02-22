@@ -16,7 +16,7 @@
 
 > ⚠️ **Beta / Preview Notice**
 >
-> This is an early preview of Raksha Kosh. The live hosted version runs on a free-tier backend which has limited resources — file scans above **~15 MB** may fail or time out due to hosting constraints, not the application itself.
+> This is an early preview of Raksha Kosh. The live hosted version runs on a free-tier backend which has limited resources — file scans above **~10 MB** may fail or time out due to hosting constraints, not the application itself.
 >
 > For the best and most reliable experience, we recommend **cloning the repo and running the app locally**:
 > ```bash
