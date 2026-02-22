@@ -48,7 +48,7 @@ const ALLOWED_MIMES = [
   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
   "application/vnd.openxmlformats-officedocument.presentationml.presentation",
 ];
-const MAX_SIZE = 50 * 1024 * 1024;
+const MAX_SIZE = 10 * 1024 * 1024;
 const MAGIC = {
   FFD8FFE0: "image/jpeg",
   FFD8FFE1: "image/jpeg",
