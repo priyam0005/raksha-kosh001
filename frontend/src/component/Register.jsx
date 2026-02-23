@@ -1,9 +1,7 @@
-import { useForm } from "react-hook-form";
+           import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
-import { loginUser } from "../store/login";
-import {useState} from "react"
+import { useState } from "react";
 
 export default function AuthForms() {
   const {
@@ -15,20 +13,19 @@ export default function AuthForms() {
     formState: { errors },
   } = useForm({ mode: "onChange" });
 
-  const dispatch = useDispatch();
-  const [loading,setloading]= useState(false)
+  const [loading, setLoading] = useState(false);
   const password = watch("password", "");
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     try {
-      setloading(true)
-      await axios.post("https://raksha-kosh02.onrender.com/upload/register", {
+      setLoading(true);
+      const res = await axios.post("https://raksha-kosh02.onrender.com/upload/register", {
         email: data.email,
         name: data.username,
         password: data.password,
-        
       });
+      console.log(res);
       navigate("/login");
       reset();
     } catch (err) {
@@ -38,7 +35,6 @@ export default function AuthForms() {
       } else {
         setError("root", { type: "server", message });
       }
-      setloading(false)
       reset();
     }
   };
@@ -96,7 +92,6 @@ export default function AuthForms() {
             <div className="w-12" />
           </div>
 
-          {/* ✅ Single form only here */}
           <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-4">
             {/* Full Name */}
             <div>
