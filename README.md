@@ -376,12 +376,12 @@ npm install
 
 Create a `.env` file in the `/backend` directory:
 ```env
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-JWT_EXPIRES_IN=7d
-VIRUSTOTAL_API_KEY=your_virustotal_key
-AES_SECRET=your_aes_256_secret
+
+MONGO_URI=mongodb_connection_string
+JWT_SECRET=jwt_secret
+CLIENT_URL=Backend_server_url
+VIRUSTOTAL_API_KEY=virustotal_key
+
 ```
 
 Start the backend server:
