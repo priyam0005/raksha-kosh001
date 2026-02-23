@@ -513,7 +513,7 @@ function DropZone({ onFile, inputRef }) {
           <span className="text-zinc-500">or drag and drop</span>
         </p>
         <p className="text-xs font-mono text-zinc-600 tracking-wide">
-          JPG · PNG · PDF · DOCX · XLSX · PPTX · max 50 MB
+          JPG · PNG · PDF · DOCX · XLSX · PPTX · max 10 MB (BETA)
         </p>
       </div>
     </div>
