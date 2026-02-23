@@ -24,7 +24,7 @@
 >
 > For the best and most reliable experience, we recommend **cloning the repo and running the app on your local machine** until we upgrade to a premium backend plan:
 > ```bash
-> git clone https://github.com/priyam0005/raksha_kosh032.git
+> git clone https://github.com/priyam0005/raksha_kosh001.git
 > ```
 > Full local setup instructions are in the [Getting Started](#getting-started) section.
 
