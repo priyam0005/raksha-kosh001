@@ -58,6 +58,24 @@ Raksha Kosh is a full-stack file security platform that runs every uploaded file
 
 ---
 
+
+
+## Screenshots
+
+### Home
+![Home](./screenShot/Home.png)
+
+### Login
+![Login](./screenShot/login.png)
+
+### Dashboard
+![Dashboard](./screenShot/dashboard.png)
+
+### Scan
+![Scan](./screenShot/scan.png)
+
+
+
 ## Supported File Types
 
 Raksha Kosh supports scanning across **6 file categories**:
