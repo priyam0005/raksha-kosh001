@@ -96,7 +96,32 @@ async function scanLayer2(file) {
 }
 
 function scanLayer3Metadata(fileBuffer) {
-  const result = layer4MetadataForensics(fileBuffer);
+  let result;
+  const start = Date.now();
+
+  try {
+    result = layer4MetadataForensics(fileBuffer);
+  } catch (err) {
+    return {
+      pass: null,
+      timedOut: true,
+      status: 503,
+      scanLabel: "Metadata Forensics",
+      reason: "Metadata scan could not complete due to a server issue. This is not a security verdict.",
+      detail: { error: err.message },
+    };
+  }
+
+  if (Date.now() - start >= 35_000) {
+    return {
+      pass: null,
+      timedOut: true,
+      status: 503,
+      scanLabel: "Metadata Forensics",
+      reason: "Metadata scan timed out. This is not a security verdict — please retry.",
+      detail: {},
+    };
+  }
 
   const hasErrors = (result.errors || []).length > 0;
   const hasThreats = (result.injectionThreats || []).length > 0;
@@ -253,6 +278,18 @@ async function runLayer3(req, res) {
         .json({ success: false, layer: 3, reason: "No file uploaded." });
     const fileBuffer = fs.readFileSync(filePath);
     const r = scanLayer3Metadata(fileBuffer);
+
+    if (r.timedOut) {
+      deleteFile(filePath);
+      return res.status(503).json({
+        success: false,
+        layer: 3,
+        scanLabel: r.scanLabel,
+        passed: null,
+        reason: r.reason,
+      });
+    }
+
     deleteFile(filePath);
     return r.pass
       ? res.status(200).json({
@@ -383,22 +420,35 @@ async function runFullScan(req, res) {
     console.log("[Full Scan] ✅ Layer 2 passed");
 
     // ── Layer 3 — Metadata Forensics ─────────────────────────────────────────
-    console.log("[Full Scan] ▶ Layer 3 — Metadata Forensics...");
     const r3meta = scanLayer3Metadata(fileBuffer);
-    if (!r3meta.pass)
-      return finalize(r3meta.status, {
-        success: r3meta.status !== 500,
-        layerCaught: 3,
-        scanLabel: r3meta.scanLabel,
-        passed: false,
-        reason: r3meta.reason,
-        explanation:
-          "Blocked at Layer 3 — Metadata contains injected payloads, malicious scripts, or suspicious timestamps.",
-        failReasons: r3meta.failReasons,
-        detail: r3meta.detail,
-      });
-    summary.layer3 = { passed: true, ...r3meta.detail };
-    console.log("[Full Scan] ✅ Layer 3 passed");
+
+if (r3meta.timedOut) {
+  console.warn("[Full Scan] ⚠ Layer 3 timed out — server issue, not a threat.");
+  return finalize(503, {
+    success: false,
+    layerCaught: 3,
+    scanLabel: r3meta.scanLabel,
+    passed: null,
+    reason: r3meta.reason,
+    explanation: "Layer 3 timed out due to a server issue. The file was not flagged as malicious.",
+  });
+}
+
+if (!r3meta.pass)
+  return finalize(r3meta.status, {
+    success: r3meta.status !== 500,
+    layerCaught: 3,
+    scanLabel: r3meta.scanLabel,
+    passed: false,
+    reason: r3meta.reason,
+    explanation:
+      "Blocked at Layer 3 — Metadata contains injected payloads, malicious scripts, or suspicious timestamps.",
+    failReasons: r3meta.failReasons,
+    detail: r3meta.detail,
+  });
+
+summary.layer3 = { passed: true, ...r3meta.detail };
+console.log("[Full Scan] ✅ Layer 3 passed");
 
     // ── Layer 4 — Antivirus ───────────────────────────────────────────────────
     console.log(`[Full Scan] ▶ Layer 4 — Antivirus (${msLeft()}ms budget)...`);
