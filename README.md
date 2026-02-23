@@ -63,16 +63,16 @@ Raksha Kosh is a full-stack file security platform that runs every uploaded file
 ## Screenshots
 
 ### Home
-![Home](./screenShot/Home.png)
+![Home](./ScreenShot/Home.png)
 
 ### Login
-![Login](./screenShot/login.png)
+![Login](./ScreenShot/login.png)
 
 ### Dashboard
-![Dashboard](./screenShot/dashboard.png)
+![Dashboard](./ScreenShot/dashboard.png)
 
 ### Scan
-![Scan](./screenShot/scan.png)
+![Scan](./ScreenShot/scan.png)
 
 
 
