@@ -69,7 +69,7 @@ Raksha Kosh is a full-stack file security platform that runs every uploaded file
 ![Login](./ScreenShot/login.png)
 
 ### Dashboard
-![Dashboard](./ScreenShot/dashboard.png)
+![Dashboard](./ScreenShot/Dashboard.png)
 
 ### Scan
 ![Scan](./ScreenShot/scan.png)
