@@ -39,7 +39,7 @@ export default function Footer() {
             everyone.
           </p>
           <a
-            href="https://github.com/priyam0005/raksha-kosh001"
+            href="https://github.com/priyam0005/raksha-kosh001.git"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 text-zinc-400 hover:text-white text-xs border border-zinc-700 hover:border-zinc-500 rounded-md px-3 py-1.5 transition-colors no-underline"
