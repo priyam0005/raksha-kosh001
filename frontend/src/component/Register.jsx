@@ -40,7 +40,6 @@ export default function AuthForms() {
   };
 
   return (
-   <form onSubmit={handleSubmit(onSubmit)}>
     <div
       className="min-h-screen bg-[#0a0a0a] bg-gradient-to-b from-zinc-800 via-zinc-950 to-black flex items-center justify-center px-4"
       style={{ fontFamily: "'DM Sans', sans-serif" }}
@@ -93,6 +92,7 @@ export default function AuthForms() {
             <div className="w-12" />
           </div>
 
+          {/* ✅ Single form only here */}
           <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-4">
             {/* Full Name */}
             <div>
@@ -224,6 +224,5 @@ export default function AuthForms() {
         </div>
       </div>
     </div>
-   </form>
   );
 }
