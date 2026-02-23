@@ -40,6 +40,7 @@ export default function AuthForms() {
   };
 
   return (
+   <form onSubmit={handleSubmit(onSubmit)}>
     <div
       className="min-h-screen bg-[#0a0a0a] bg-gradient-to-b from-zinc-800 via-zinc-950 to-black flex items-center justify-center px-4"
       style={{ fontFamily: "'DM Sans', sans-serif" }}
@@ -223,5 +224,6 @@ export default function AuthForms() {
         </div>
       </div>
     </div>
+   </form>
   );
 }
