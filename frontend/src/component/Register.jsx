@@ -15,12 +15,13 @@ export default function AuthForms() {
   } = useForm({ mode: "onChange" });
 
   const dispatch = useDispatch();
-  const { loading } = useSelector((state) => state.just);
+  const [loading,setloading]= useState(false)
   const password = watch("password", "");
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     try {
+      setloading(true)
       await axios.post("https://raksha-kosh02.onrender.com/upload/register", {
         email: data.email,
         name: data.username,
@@ -36,6 +37,7 @@ export default function AuthForms() {
       } else {
         setError("root", { type: "server", message });
       }
+      setloading(false)
       reset();
     }
   };
