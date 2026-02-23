@@ -24,7 +24,8 @@ export default function AuthForms() {
       await axios.post("https://raksha-kosh02.onrender.com/upload/register", {
         email: data.email,
         username: data.username,
-        password: data.password,
+        passwordHash: data.password,
+        totalScans:0
       });
       navigate("/login");
       reset();
