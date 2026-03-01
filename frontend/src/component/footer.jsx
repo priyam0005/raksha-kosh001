@@ -82,7 +82,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-zinc-800 px-8 py-3 max-w-5xl mx-auto flex items-center justify-between">
         <span className="text-amber-600 text-xs">
-          Developed by Cragey Cryptics
+          Developed by Priyam Pathak
         </span>
         <div className="flex items-center gap-6">
           {[
